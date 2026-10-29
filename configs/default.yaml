@@ -1,0 +1,41 @@
+paths:
+  raw: data/raw
+  interim: data/interim
+  processed: data/processed
+  models: models
+  results: results
+dataset:
+  name: earnings_calls
+  format: csv
+parsing:
+  question_answer_section: Q&A
+  speaker_field: speaker
+  text_field: text
+gender:
+  source: first_name
+  unknown_label: unknown
+scoring:
+  scale_min: 0
+  scale_max: 100
+stats:
+  alpha: 0.05
+  n_bootstrap: 5000
+  n_permutations: 10000
+  fdr_method: bh
+viz:
+  theme: default
+gender:
+  source: first_name
+  unknown_label: Unknown
+  overrides_path: data/external/gender_overrides.csv
+  salt: change-me-for-coursework
+  include_probable: true
+argmining:
+  labels: [CLAIM, EVIDENCE, REBUTTAL, REQUEST, OTHER]
+  sentence_cache: data/interim/sentences.parquet
+  gold_path: data/annotations/gold_todo.csv
+  training_regime: gold_cv
+  model: logistic
+  include_char_ngrams: true
+  macro_f1_threshold: 0.20
+seed: 42

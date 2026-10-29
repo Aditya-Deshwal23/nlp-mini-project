@@ -1,0 +1,3 @@
+Operator: question-and-answer session
+Hana Fiction -- Analyst: Is pricing stable?
+CFO -- Executive: Pricing is stable.

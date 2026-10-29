@@ -1,0 +1,4 @@
+Operator: Q&A
+Eli Mock -- Analyst: How is demand?
+CEO -- Executive: Demand is healthy.
+CFO -- Executive: Cash conversion is also healthy.

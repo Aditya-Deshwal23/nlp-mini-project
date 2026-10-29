@@ -1,0 +1,9 @@
+{
+  "n_requested": 300,
+  "n_written": 25,
+  "seed": 42,
+  "rule_weights": {
+    "OTHER": 1.0,
+    "non_OTHER": 3.0
+  }
+}

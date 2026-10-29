@@ -1,0 +1,57 @@
+# Feature columns and the single missing-data policy for the generated feature table.
+missing_data_policy:
+  nullable_columns:
+    [answer_to_question_ratio, answer_numeric_density, top_responder_word_share,
+     call_year, call_quarter, structure_q, specificity_q, clarity_q, calibration_q, AQS_q,
+     structure_a, specificity_a, clarity_a, calibration_a, AQS_a]
+  rule: "Do not silently impute. Pairwise analyses drop NaN values for the variables used; report the retained n."
+response_config:
+  lexicon_root: configs/lexicons
+  stopwords: [the, a, an, and, or, to, of, in, for, on, with, is, are, was, were]
+columns:
+  - {name: exchange_id, description: Stable exchange identifier, type: integer, family: control}
+  - {name: call_id, description: Call identifier, type: string, family: control}
+  - {name: analyst_id, description: Salted analyst identifier, type: string, family: control}
+  - {name: analyst_gender, description: Inferred perceived analyst gender category, type: string, family: control}
+  - {name: analyst_gender_conf, description: Confidence of inferred analyst gender, type: string, family: control}
+  - {name: question_text, description: Analyst question text, type: string, family: structure}
+  - {name: answer_text, description: Executive answer text, type: string, family: response}
+  - {name: relevance_tfidf, description: TF-IDF cosine similarity of question and answer, type: float, family: response}
+  - {name: keyword_overlap, description: Jaccard overlap of noun-chunk lemmas, type: float, family: response}
+  - {name: courtesy_opener, description: Answer begins with a courtesy phrase, type: boolean, family: response}
+  - {name: direct_opener, description: Answer begins with a direct response, type: boolean, family: response}
+  - {name: deflection_rate, description: Deflection lexicon matches per answer word, type: float, family: response}
+  - {name: hedge_rate, description: Hedge lexicon matches per answer word, type: float, family: response}
+  - {name: certainty_rate, description: Certainty lexicon matches per answer word, type: float, family: response}
+  - {name: answer_words, description: Number of words in executive answer, type: integer, family: response}
+  - {name: question_words, description: Number of words in analyst question, type: integer, family: response}
+  - {name: answer_to_question_ratio, description: Answer words divided by question words, type: float, family: response}
+  - {name: answer_numeric_density, description: Numeric-token share per 100 answer words, type: float, family: specificity}
+  - {name: n_responders, description: Number of distinct responders, type: integer, family: response}
+  - {name: first_responder_role, description: Normalized role of first responder, type: string, family: response}
+  - {name: top_responder_word_share, description: Largest responder word count divided by answer words, type: float, family: response}
+  - {name: sentiment_question, description: VADER compound sentiment of question, type: float, family: response}
+  - {name: sentiment_answer, description: VADER compound sentiment of answer, type: float, family: response}
+  - {name: tone_gap, description: Answer sentiment minus question sentiment, type: float, family: response}
+  - {name: was_interrupted, description: Whether the exchange contains an interruption, type: boolean, family: interaction}
+  - {name: first_responder_id, description: Salted first-responder identifier, type: string, family: control}
+  - {name: first_responder_gender, description: Inferred perceived first-responder gender category, type: string, family: control}
+  - {name: responder_gender_mix, description: Gender composition of responders, type: string, family: control}
+  - {name: order_in_call, description: Zero-based exchange order within call, type: integer, family: interaction}
+  - {name: order_norm, description: Exchange order normalized within call, type: float, family: interaction}
+  - {name: is_followup, description: Whether the analyst has spoken earlier in the call, type: boolean, family: interaction}
+  - {name: n_followups_by_analyst_in_call, description: Number of follow-ups by this analyst in the call, type: integer, family: interaction}
+  - {name: call_n_exchanges, description: Number of exchanges in the call, type: integer, family: interaction}
+  - {name: call_year, description: Calendar year of the call, type: integer, family: interaction}
+  - {name: call_quarter, description: Calendar quarter of the call, type: integer, family: interaction}
+  - {name: structure_q, description: AQS question structure component, type: float, family: outcome}
+  - {name: specificity_q, description: AQS question specificity component, type: float, family: outcome}
+  - {name: clarity_q, description: AQS question clarity component, type: float, family: outcome}
+  - {name: calibration_q, description: AQS question calibration component, type: float, family: outcome}
+  - {name: focus, description: AQS question focus component, type: float, family: outcome}
+  - {name: AQS_q, description: Transparent question Argument Quality Score, type: float, family: outcome}
+  - {name: structure_a, description: AQS answer structure component, type: float, family: outcome}
+  - {name: specificity_a, description: AQS answer specificity component, type: float, family: outcome}
+  - {name: clarity_a, description: AQS answer clarity component, type: float, family: outcome}
+  - {name: calibration_a, description: AQS answer calibration component, type: float, family: outcome}
+  - {name: AQS_a, description: Transparent answer Argument Quality Score, type: float, family: outcome}

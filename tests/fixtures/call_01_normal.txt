@@ -1,0 +1,3 @@
+Operator: We will now begin the question and answer session.
+Ada Example -- Analyst: What changed?
+CFO -- Executive: Costs improved.

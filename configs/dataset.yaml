@@ -1,0 +1,45 @@
+paths:
+  raw: tests/fixtures
+  interim: data/interim
+  processed: data/processed
+  models: models
+  results: results
+seed: 42
+dataset:
+  name: synthetic
+  format: text_folder
+  root: tests/fixtures
+  file_glob: "*.txt"
+  columns:
+    call_id: call_id
+    company: company
+    ticker: ticker
+    call_date: call_date
+    section: section
+    turn_idx: turn_idx
+    speaker_name: speaker_name
+    speaker_raw_role: speaker_raw_role
+    speaker_affiliation: speaker_affiliation
+    text: text
+  speaker_header_regex: '^\s*(?P<speaker>[^:\n-]+?)\s*(?:--\s*(?P<role>[^:\n]+))?:\s*(?P<text>.*)$'
+parsing:
+  qa_markers:
+    - question-and-answer session
+    - question and answer session
+    - q&a
+    - we will now begin
+  bracketed_directions_regex: '\[[^\]]*\]'
+  interrupted_marker: '[Interrupted]'
+gender:
+  overrides_path: data/external/gender_overrides.csv
+  salt: change-me-for-coursework
+  include_probable: true
+roles:
+  executive_titles_path: configs/lexicons/exec_titles.txt
+argmining:
+  sentence_cache: data/interim/sentences.parquet
+  gold_path: data/annotations/gold_todo.csv
+  training_regime: gold_cv
+  model: logistic
+  include_char_ngrams: true
+  macro_f1_threshold: 0.20

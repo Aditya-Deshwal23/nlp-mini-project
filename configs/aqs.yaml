@@ -1,0 +1,20 @@
+# Transparent rubric: weights reflect the stated construct, not ground truth.
+question:
+  weights:
+    structure: 0.30       # asks for a supported, structured response
+    specificity: 0.25     # rewards concrete numbers and entities
+    clarity: 0.20         # rewards readable, appropriately concise questions
+    calibration: 0.10     # discourages excessive hedging
+    focus: 0.15           # rewards one clear request rather than a stack
+  hedge_threshold: 0.20
+  readability_band: [45, 80]
+  long_sentence_tokens: 35
+answer:
+  weights:
+    structure: 0.35       # rewards claims supported by evidence
+    specificity: 0.25     # rewards concrete details
+    clarity: 0.20         # rewards readable answers
+    calibration: 0.20     # rewards appropriately calibrated language
+  hedge_threshold: 0.25
+  readability_band: [45, 80]
+  long_sentence_tokens: 35

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <title>ECBias table schema</title>
+  <desc>Main tables and join keys used by the exchange-level pipeline.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker></defs>
+  <rect width="1200" height="600" fill="#fff"/>
+  <text x="40" y="42" font-family="sans-serif" font-size="24" font-weight="700">Main ECBias tables and join keys</text>
+  <g stroke="#555" stroke-width="1" font-family="sans-serif" font-size="14" fill="#222">
+    <rect x="45" y="100" width="240" height="300" rx="8" fill="#eeeeee"/>
+    <rect x="335" y="100" width="260" height="330" rx="8" fill="#eadcf8"/>
+    <rect x="645" y="100" width="250" height="300" rx="8" fill="#d9f0ed"/>
+    <rect x="945" y="100" width="210" height="360" rx="8" fill="#cfeee9"/>
+  </g>
+  <g font-family="sans-serif" font-size="16" font-weight="700" fill="#222">
+    <text x="65" y="130">turns.parquet</text><text x="355" y="130">exchanges.parquet</text><text x="665" y="130">sentences_labeled</text><text x="965" y="130">features.parquet</text>
+  </g>
+  <g font-family="sans-serif" font-size="14" fill="#222">
+    <text x="65" y="165"><tspan>PK call_id + turn_idx</tspan><tspan x="65" dy="24">call_id</tspan><tspan x="65" dy="22">speaker_name</tspan><tspan x="65" dy="22">section</tspan><tspan x="65" dy="22">text</tspan><tspan x="65" dy="22">speaker_type</tspan><tspan x="65" dy="22">qa_found</tspan></text>
+    <text x="355" y="165"><tspan>PK exchange_id</tspan><tspan x="355" dy="24">call_id</tspan><tspan x="355" dy="22">question_text</tspan><tspan x="355" dy="22">answer_text</tspan><tspan x="355" dy="22">analyst_id</tspan><tspan x="355" dy="22">first_responder_id</tspan><tspan x="355" dy="22">order_in_call</tspan><tspan x="355" dy="22">is_followup</tspan></text>
+    <text x="665" y="165"><tspan>PK exchange_id + side + sent_idx</tspan><tspan x="665" dy="24">exchange_id</tspan><tspan x="665" dy="22">side</tspan><tspan x="665" dy="22">text</tspan><tspan x="665" dy="22">label</tspan><tspan x="665" dy="22">rule flags</tspan></text>
+    <text x="965" y="165"><tspan>PK exchange_id</tspan><tspan x="965" dy="24">analyst_id</tspan><tspan x="965" dy="22">response metrics</tspan><tspan x="965" dy="22">interaction metrics</tspan><tspan x="965" dy="22">AQS components</tspan><tspan x="965" dy="22">AQS_q / AQS_a</tspan><tspan x="965" dy="22">gender categories</tspan></text>
+  </g>
+  <g stroke="#333" stroke-width="1" fill="none" marker-end="url(#arrow)">
+    <path d="M285 250 H335"/><path d="M595 250 H645"/><path d="M895 250 H945"/>
+  </g>
+  <g font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle"><text x="310" y="238">call_id</text><text x="620" y="238">exchange_id</text><text x="920" y="238">exchange_id</text></g>
+  <text x="45" y="520" font-family="sans-serif" font-size="16">Names are retained only in interim exchange/turn data; result-facing tables use salted IDs.</text>
+</svg>

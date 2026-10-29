@@ -1,0 +1,3 @@
+Operator: Q&A
+Jo Example -- Analyst: Can you summarize?
+CEO -- Executive: We remain focused.
